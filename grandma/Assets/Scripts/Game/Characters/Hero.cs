@@ -12,6 +12,13 @@ namespace Tumba.Game.Characters
             if(dir != Vector2.zero)
                 MoveForward();
         }
-        
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "enemy")
+            {
+                Enemy e = collision.GetComponent<Enemy>();
+                e.Die();
+            }
+        }
     }
 }

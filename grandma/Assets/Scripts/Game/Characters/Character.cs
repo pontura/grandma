@@ -6,12 +6,22 @@ namespace Tumba.Game.Characters
 {
     public class Character : MonoBehaviour
     {
-        public float speed = 10;
-        Vector2 dir;
+        float speed = 10;
+        protected Vector2 dir;
+        protected float delayToShoot = 0.1f;
 
-        public void LookTo(Vector2 dir)
+        public void SetDelayToShoot(float _delayToShoot)
         {
-            this.dir = dir;
+            this.delayToShoot = _delayToShoot;
+        }
+        public void SetSpeed(float _speed)
+        {
+            this.speed = _speed;
+        }
+        public void LookTo(Vector2 _dir)
+        {
+            if(_dir != Vector2.zero)
+                this.dir = _dir;
         }
         public void MoveForward()
         {

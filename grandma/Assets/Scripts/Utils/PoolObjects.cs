@@ -10,7 +10,16 @@ public class PoolObjects : MonoBehaviour
     [SerializeField] List<GameObject> objectsToPool;
     Dictionary<string, List<GameObject>> all;
 
-    public GameObject GetObject(string key)
+    private void Awake()
+    {
+        all = new Dictionary<string, List<GameObject>>();
+        foreach (GameObject go in objectsToPool)
+        {
+            all.Add(go.name, new List<GameObject>());
+            AddNeObject(go.name);
+        }
+    }
+    public GameObject Get(string key)
     {
         foreach (KeyValuePair<string, List<GameObject>> d in all)
         {
@@ -18,20 +27,19 @@ public class PoolObjects : MonoBehaviour
             {
                 GameObject go = GetObjectInDic(d.Value);
                 if (go == null)
-                {
                     go = AddNeObject(key);
-                    return go;
-                }
+                go.gameObject.SetActive(true);
+                return go;
             }
         }
-        Debug.LogError("No obj on pool" + key);
+        Debug.LogError("No obj on pool: " + key);
         return null;
     }
     public GameObject GetObjectInDic(List<GameObject> allInDic)
     {
         foreach (GameObject go in allInDic)
         {
-            if (go.activeSelf)
+        if (!go.activeSelf)
                 return go;
         }
         return null;
@@ -46,9 +54,10 @@ public class PoolObjects : MonoBehaviour
                 {
                     if (d.Key == key)
                     {
-                        List<GameObject> a = d.Value;
                         GameObject newGO = Instantiate(go, container);
-                        a.Add(newGO);
+                        newGO.name = key;
+                        newGO.SetActive(false);
+                        d.Value.Add(newGO);
                         return newGO;
                     }
                 }
