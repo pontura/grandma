@@ -26,7 +26,13 @@ namespace Tumba.Game.Characters
         }
         public void Die()
         {
-            enemiesManager.Die(this);
+            GameManager gm = GameManager.Instance;
+            GameObject go = gm.pool.Get("Soul");
+            go.transform.position = transform.position;
+            go.SetActive(true);
+            go.transform.SetParent(gm.items);
+            print("soul");
+           enemiesManager.Die(this);
         }
     }
 }

@@ -17,6 +17,7 @@ public class PoolObjects : MonoBehaviour
         {
             all.Add(go.name, new List<GameObject>());
             AddNeObject(go.name);
+            go.SetActive(false);
         }
     }
     public GameObject Get(string key)

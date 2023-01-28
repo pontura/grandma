@@ -20,6 +20,7 @@ namespace Tumba
         {
             Debug.Log("DATA LoadLevel " + aLevelName);
             this.newScene = aLevelName;
+            SceneManager.LoadScene(aLevelName);
         }
         void Awake()
         {

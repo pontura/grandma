@@ -13,7 +13,8 @@ namespace Tumba.Game.Characters
         System.Action<GameObject> Pool;
 
         [SerializeField] float speed;
-        [SerializeField] float delayToRespawn;
+        [SerializeField] float delayToRespawn = 1;
+        [SerializeField] float minDelay = 0.1f;
 
         public void Init()
         {
@@ -35,6 +36,10 @@ namespace Tumba.Game.Characters
         {
             AddEnemy();
             Invoke("Loop", delayToRespawn);
+            delayToRespawn -= 0.03f;
+            if (delayToRespawn < minDelay)
+                delayToRespawn = minDelay;
+                
         }
         void AddEnemy()
         {

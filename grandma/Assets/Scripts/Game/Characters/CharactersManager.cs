@@ -18,6 +18,8 @@ namespace Tumba.Game.Characters
         public void Init()
         {
             SetParams();
+            foreach (CharacterHelper h in helpers)
+                h.Init(hero);
         }
         void SetParams()
         {

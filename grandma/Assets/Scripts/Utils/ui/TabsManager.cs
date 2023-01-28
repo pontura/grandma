@@ -16,8 +16,8 @@ namespace Tumba.UI
             public GameObject content;
         }
 
-        [SerializeField] ButtonCustom button;
-        List<ButtonCustom> buttons;
+        [SerializeField] ButtonUI button;
+        List<ButtonUI> buttons;
 
         [SerializeField] Transform container;
 
@@ -28,12 +28,12 @@ namespace Tumba.UI
         }
         public void SetButtons()
         {
-            buttons = new List<ButtonCustom>();
+            buttons = new List<ButtonUI>();
             Utils.RemoveAllChildsIn(container);
             int id = 0;
             foreach (ListItemData data in all)
             {
-                ButtonCustom b = Instantiate(button, container);                
+                ButtonUI b = Instantiate(button, container);                
                // b.Init(id, Select, Data.Instance.texts.Get(data.name));
                 buttons.Add(b);
                 id++;
@@ -41,7 +41,7 @@ namespace Tumba.UI
         }
         public void Select(int id)
         {
-            foreach (ButtonCustom b in buttons)
+            foreach (ButtonUI b in buttons)
                 b.OnSelected(false);
             foreach (ListItemData data in all)
                 data.content.SetActive(false);

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 namespace Tumba.UI
 {
-    public class ButtonCustom : MonoBehaviour
+    public class ButtonUI : MonoBehaviour
     {
         public Text field;
         [SerializeField] float delayToSelectedAnim;
@@ -18,11 +18,7 @@ namespace Tumba.UI
         Button button;
         public enum types
         {
-            UI_GENERIC,
-            TAB,
-            LIST_ITEM,
-            KEY_PRESSED,
-            CLOSE
+            UI_GENERIC
         }
         bool disableIfClicked;
 
@@ -52,7 +48,7 @@ namespace Tumba.UI
         }
         public virtual void OnClick()
         {
-            Events.OnButtonPressed(type); 
+            Events.OnButtonPressed(type.ToString());
             if (OnClickCallback != null)
                 OnClickCallback(buttonID);
         }
@@ -61,7 +57,7 @@ namespace Tumba.UI
             CancelInvoke();
         }
         public void OnSelected(bool isOn)
-        {            
+        {
             isSelected = isOn;
             if (anim == null)
             {
@@ -78,11 +74,11 @@ namespace Tumba.UI
         {
             if (isSelected && delayToSelectedAnim > 0)
                 Invoke("SelectedAnim", delayToSelectedAnim);
-        }        
+        }
         void Idle()
         {
             if (button == null) return;
-            if(disableIfClicked) SetInteraction(true);
+            if (disableIfClicked) SetInteraction(true);
             if (idleAnim != null) Anim(idleAnim.name);
         }
         void SelectedAnim()
@@ -111,10 +107,10 @@ namespace Tumba.UI
         {
             OnClickCallback = null;
             OnDestroyed();
-            if(GetComponent<Button>() != null)
+            if (GetComponent<Button>() != null)
                 GetComponent<Button>().onClick.RemoveAllListeners();
         }
-        protected virtual void OnDestroyed(){}
+        protected virtual void OnDestroyed() { }
         public void SetInteraction(bool isOn)
         {
             if (button == null) return;

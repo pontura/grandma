@@ -19,6 +19,11 @@ namespace Tumba.Game.Characters
                 Enemy e = collision.GetComponent<Enemy>();
                 e.Die();
             }
+            if (collision.tag == "soul")
+            {
+                Grabbable g = collision.GetComponent<Grabbable>();
+                g.OnGrab(transform);
+            }
         }
     }
 }

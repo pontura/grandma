@@ -14,6 +14,7 @@ namespace Tumba
         public WeaponsMmanager weaponsManager;
         public CharactersManager charactersManager;
         public EnemiesManager enemiesManager;
+        public Transform items;
 
         public static GameManager Instance
         {

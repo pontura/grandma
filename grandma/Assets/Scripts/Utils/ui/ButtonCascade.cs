@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Tumba.UI
 {
-    public class ButtonCascade : ButtonCustom
+    public class ButtonCascade : ButtonUI
     {
         [SerializeField] GameObject all; //Main gameObject to show/hidew
         [SerializeField] AnimationClip enterAnim;
