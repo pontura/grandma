@@ -31,7 +31,6 @@ namespace Tumba.Game.Characters
             go.transform.position = transform.position;
             go.SetActive(true);
             go.transform.SetParent(gm.items);
-            print("soul");
            enemiesManager.Die(this);
         }
     }

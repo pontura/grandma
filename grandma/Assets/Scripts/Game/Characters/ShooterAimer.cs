@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tumba.Stats;
 using UnityEngine;
 
 namespace Tumba.Game.Characters
@@ -11,6 +12,9 @@ namespace Tumba.Game.Characters
         float offset = 1.5f;
         float timer;
 
+        public override void OnInit()
+        {
+        }
         public override void OnUpdate(Vector2 heroPos, Vector2 dir)
         {
             LookTo(dir);

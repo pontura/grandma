@@ -13,25 +13,16 @@ namespace Tumba.Game.Characters
 
         [SerializeField] float heroSpeed;
         [SerializeField] float helperSpeed;
-        [SerializeField] float delayToShoot = 0.1f;
 
         public void Init()
         {
-            SetParams();
             foreach (CharacterHelper h in helpers)
                 h.Init(hero);
         }
-        void SetParams()
-        {
-            Invoke("SetParams", 1);
-
-            foreach (CharacterHelper h in helpers)
-            {
-                h.SetSpeed(helperSpeed);
-                h.SetDelayToShoot(delayToShoot);
-            }
-            hero.SetSpeed(heroSpeed);
-        }
+        //void SetParams()
+        //{
+        //    Invoke("SetParams", 1);
+        //}
         public void OnUpdate()
         {
             float _x = variableJoystick.Horizontal;

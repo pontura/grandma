@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tumba.Stats;
 using UnityEngine;
 
 namespace Tumba.Game.Characters
@@ -9,7 +10,15 @@ namespace Tumba.Game.Characters
         float speed = 10;
         protected Vector2 dir;
         protected float delayToShoot = 0.1f;
+        public StatsManager statsManager;
 
+        public virtual void InitStats(StatsData s)
+        {
+            statsManager = new StatsManager();
+            statsManager.Init(s);
+            speed = s.speed / 100;
+            delayToShoot = s.hitTime / 10000;
+        }
         public void SetDelayToShoot(float _delayToShoot)
         {
             this.delayToShoot = _delayToShoot;

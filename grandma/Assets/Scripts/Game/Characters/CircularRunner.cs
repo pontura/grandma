@@ -21,6 +21,7 @@ namespace Tumba.Game.Characters
         }
         public override void OnUpdate(Vector2 heroPos, Vector2 heroDir)
         {
+            rotationSpeed = statsManager.stats.speed;
             target.transform.position = heroPos;
             rot = rotationSpeed * Time.deltaTime;
             target.transform.Rotate(Vector3.forward, rot);

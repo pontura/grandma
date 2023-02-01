@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44715452, g: 0.49653947, b: 0.5729871, a: 1}
+  m_IndirectSpecularColor: {r: 0.44977283, g: 0.4998418, b: 0.57561326, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -783,7 +783,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbcb3f49a5ee50438c4de3419189656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 10
+  statsManager:
+    stats:
+      power: 0
+      speed: 0
+      hitTime: 0
+      health: 0
+  smooth: 100
   rotationSpeed: 250
   forwardValue: 2
   weaponName: Bullet1
@@ -1034,6 +1040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a08447da625e4e45baa96a13d464611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsManager:
+    stats:
+      power: 0
+      speed: 0
+      hitTime: 0
+      health: 0
   smooth: 10
   weaponName: Bullet1
 --- !u!1 &859775016
@@ -1392,7 +1404,6 @@ MonoBehaviour:
   - {fileID: 527976931}
   heroSpeed: 2
   helperSpeed: 3
-  delayToShoot: 0.2
 --- !u!114 &1173883498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,6 +2050,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921f06ccf1856154ca53b7ebfb0a20ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsManager:
+    stats:
+      power: 0
+      speed: 0
+      hitTime: 0
+      health: 0
 --- !u!1 &2018474164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,6 +2200,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2143489521}
   - component: {fileID: 2143489520}
+  - component: {fileID: 2143489522}
+  - component: {fileID: 2143489523}
   m_Layer: 0
   m_Name: DATA
   m_TagString: Untagged
@@ -2202,6 +2221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92da4231ac1441c41b6a73283d2760d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spreadsheetLoader: {fileID: 0}
 --- !u!4 &2143489521
 Transform:
   m_ObjectHideFlags: 0
@@ -2217,6 +2237,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2143489522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143489519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d03a04f7078d44e8b5cfb57b6fa991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQxoLDTjqHRu8B4gcyyVOs6DhZPRssbLxWMPVNay7xur4BJIx0KduVko38dc_eL7wp8xHbCmdpbvxy3/pub?output=tsv
+  file_in_server: {fileID: 0}
+  grandMa: {fileID: 1928095048}
+  circle: {fileID: 527976931}
+  mele: {fileID: 0}
+  shooter: {fileID: 839542831}
+  allStats: []
+--- !u!114 &2143489523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143489519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1002a9a653d8b4843ad0549651f94553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1127277751183273573
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,12 +2,14 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using Tumba.Stats;
 
 namespace Tumba
 {
     public class Data : MonoBehaviour
     {
         static Data mInstance = null;
+        public SpreadsheetLoader spreadsheetLoader;
         string newScene;
         public static Data Instance
         {
@@ -34,6 +36,9 @@ namespace Tumba
             }
 
             DontDestroyOnLoad(this);
+
+            spreadsheetLoader = GetComponent<SpreadsheetLoader>();
+            GetComponent<StatsLoader>().Init();
         }
     }
 
