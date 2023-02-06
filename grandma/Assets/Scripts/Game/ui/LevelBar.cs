@@ -27,7 +27,6 @@ namespace Tumba.Game.UI
         }
         void OnSoulGrabbed(string s)
         {
-            print("OnSoulGrabbed " + s);
             switch(s)
             {
                 case "SOUL":

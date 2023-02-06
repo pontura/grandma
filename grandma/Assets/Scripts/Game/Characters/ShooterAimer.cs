@@ -31,5 +31,14 @@ namespace Tumba.Game.Characters
         {
             GameManager.Instance.weaponsManager.Shoot(weaponName, transform.position, dir);
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "enemy")
+            {
+                Enemy e = collision.GetComponent<Enemy>();
+                e.Die();
+                ReceiveDamage(e.damage);
+            }
+        }
     }
 }

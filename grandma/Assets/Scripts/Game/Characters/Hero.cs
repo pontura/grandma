@@ -6,6 +6,7 @@ namespace Tumba.Game.Characters
 {
     public class Hero : Character
     {
+
         public void SetDirection(Vector2 dir)
         {
             LookTo(dir);
@@ -18,11 +19,18 @@ namespace Tumba.Game.Characters
             {
                 Enemy e = collision.GetComponent<Enemy>();
                 e.Die();
+                ReceiveDamage(e.damage);
             }
-            if (collision.tag == "soul")
+            else if (collision.tag == "soul")
             {
                 Grabbable g = collision.GetComponent<Grabbable>();
                 g.OnGrab(transform);
+            }
+            else if (collision.tag == "Player")
+            {
+                print("helper!" + collision.tag);
+                CharacterHelper h = collision.GetComponent<CharacterHelper>();
+                h.Revive();
             }
         }
     }

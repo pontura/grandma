@@ -2,22 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using Tumba.Stats;
 using UnityEngine;
+using Tumba.Game.UI;
 
 namespace Tumba.Game.Characters
 {
     public class Character : MonoBehaviour
     {
+        [SerializeField] EnergyBar energyBar;
         float speed = 10;
         protected Vector2 dir;
         protected float delayToShoot = 0.1f;
         public StatsManager statsManager;
 
+        public states state;
+        public enum states
+        {
+            ALIVE,
+            DEAD
+        }
+
         public virtual void InitStats(StatsData s)
         {
+            energyBar.Init();
             statsManager = new StatsManager();
             statsManager.Init(s);
             speed = s.speed / 100;
-            delayToShoot = s.hitTime / 10000;
+            delayToShoot = s.hitTime / 1000;
         }
         public void SetDelayToShoot(float _delayToShoot)
         {
@@ -39,6 +49,24 @@ namespace Tumba.Game.Characters
             pos.y += dir.y * speed * Time.deltaTime;
             transform.position = pos;
         }
-        
+        public void ReceiveDamage(float value)
+        {
+            if (state == states.ALIVE)
+            {
+                statsManager.ReceiveDamage(value);
+                float lifeValue = statsManager.GetPercentLife();
+                energyBar.SetValue(lifeValue);
+                if (lifeValue <= 0)
+                    state = states.DEAD;
+            }
+        }
+        public void Revive()
+        {
+            if (state == states.DEAD)
+            {
+                statsManager.Revive();
+                state = states.ALIVE;
+            }
+        }
     }
 }

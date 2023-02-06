@@ -21,6 +21,13 @@ namespace Tumba.Game.Characters
         }
         public override void OnUpdate(Vector2 heroPos, Vector2 heroDir)
         {
+            if (state == states.DEAD)
+                UpdateDead();
+            else
+                UpdateAlive(heroPos);
+        }
+        public void UpdateAlive(Vector2 heroPos)
+        {
             rotationSpeed = statsManager.stats.speed;
             target.transform.position = heroPos;
             rot = rotationSpeed * Time.deltaTime;
@@ -34,12 +41,17 @@ namespace Tumba.Game.Characters
                 timer = 0;
             }
         }
+        public void UpdateDead()
+        {
+
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag == "enemy")
             {
                 Enemy e = collision.GetComponent<Enemy>();
                 e.Die();
+                ReceiveDamage(e.damage);
             }
         }
     }

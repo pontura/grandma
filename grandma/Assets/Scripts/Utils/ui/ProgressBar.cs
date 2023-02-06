@@ -38,7 +38,8 @@ namespace Tumba.UI
         }
         private void OnDestroy()
         {
-            OnFilled = null;
+            if(OnFilled != null)
+                OnFilled = null;
         }
     }
 }

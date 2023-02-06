@@ -8,6 +8,7 @@ namespace Tumba.Game.Characters
     {
         float speed;
         EnemiesManager enemiesManager;
+        public float damage = 10;
         public void Init(EnemiesManager _enemiesManager)
         {
             this.enemiesManager = _enemiesManager; 
