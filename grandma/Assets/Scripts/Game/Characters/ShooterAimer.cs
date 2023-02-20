@@ -15,10 +15,17 @@ namespace Tumba.Game.Characters
         public override void OnInit()
         {
         }
-        public override void OnUpdate(Vector2 heroPos, Vector2 dir)
+        public override void OnUpdate(Vector2 heroPos, Vector2 heroDir)
         {
-            LookTo(dir);
-            Vector2 dest = heroPos + (dir.normalized * offset);
+            if (state == states.DEAD)
+                UpdateDead();
+            else
+                UpdateAlive(heroPos, heroDir);
+        }
+        void UpdateAlive(Vector2 heroPos, Vector2 heroDir)
+        {
+            LookTo(heroDir);
+            Vector2 dest = heroPos + (heroDir.normalized * offset);
             transform.position = Vector2.Lerp(transform.position, dest, smooth * Time.deltaTime);
             timer += Time.deltaTime;
             if (timer > delayToShoot)
@@ -27,6 +34,7 @@ namespace Tumba.Game.Characters
                 Shoot();
             }
         }
+        void UpdateDead() { }
         void Shoot()
         {
             GameManager.Instance.weaponsManager.Shoot(weaponName, transform.position, dir);

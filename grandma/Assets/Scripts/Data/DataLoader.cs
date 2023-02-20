@@ -21,10 +21,10 @@ namespace Tumba
         public virtual void LoadData(System.Action OnReady, string url)
         {
             this.OnReady = OnReady;
-            //if (Data.Instance.loadType == Data.loadTypes.DATABASE)
-            Data.Instance.spreadsheetLoader.LoadFromTo(url, OnLoaded);
-            //else if (Data.Instance.loadType == Data.loadTypes.LOCAL)
-            //    Data.Instance.spreadsheetLoader.CreateListFromFile(file_in_server.text, OnLoaded);
+            if (Data.Instance.loadType == Data.loadTypes.DATABASE)
+                Data.Instance.spreadsheetLoader.LoadFromTo(url, OnLoaded);
+            else if (Data.Instance.loadType == Data.loadTypes.LOCAL)
+                Data.Instance.spreadsheetLoader.CreateListFromFile(file_in_server.text, OnLoaded);
             //else
             //Data.Instance.spreadsheetLoader.LoadFromTo(Data.Instance.GetURL() + "AssetBundles/" + file_in_server.name + ".txt" + "?rand=" + UnityEngine.Random.Range(1000, 10000), OnLoaded);
         }

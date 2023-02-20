@@ -14,7 +14,24 @@ namespace Tumba.Stats
             this.stats = s;
             s.Init();
         }
-        public void Revive()
+        public bool RebornRecovery(bool beingHealingByHero)
+        {
+            float healingValue = stats.recoveryTime / 10;
+            if (beingHealingByHero) healingValue *= 10;
+
+            stats.health += healingValue;
+            if (stats.health >= stats.life)
+            {
+                Reborn();
+                return true;
+            }
+            return false;
+        }
+        public float GetNormalizedHealth()
+        {
+            return stats.health / stats.life;
+        }
+        void Reborn()
         {
             stats.health = stats.life;
         }
@@ -24,7 +41,7 @@ namespace Tumba.Stats
         }
         public float GetPercentLife()
         {
-            Debug.Log (stats.health + " / " + stats.life);
+           // Debug.Log (stats.health + " / " + stats.life);
             return stats.health / stats.life;
         }
     }

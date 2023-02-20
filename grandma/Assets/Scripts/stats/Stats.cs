@@ -9,6 +9,7 @@ namespace Tumba.Stats
         public float speed;
         public float hitTime;
         public float health;
+        public float recoveryTime = 10f;
 
         public float life;
 

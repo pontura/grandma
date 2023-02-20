@@ -9,6 +9,7 @@ namespace Tumba.Game.Characters
     public class Character : MonoBehaviour
     {
         [SerializeField] EnergyBar energyBar;
+        [SerializeField] RebornBar rebornBar;
         float speed = 10;
         protected Vector2 dir;
         protected float delayToShoot = 0.1f;
@@ -20,9 +21,15 @@ namespace Tumba.Game.Characters
             ALIVE,
             DEAD
         }
+        bool beingHealingByHero;
 
         public virtual void InitStats(StatsData s)
         {
+            if(rebornBar != null)
+            {
+                rebornBar.SetActive(false);
+                rebornBar.Init(this.gameObject);
+            }
             energyBar.Init();
             statsManager = new StatsManager();
             statsManager.Init(s);
@@ -56,17 +63,33 @@ namespace Tumba.Game.Characters
                 statsManager.ReceiveDamage(value);
                 float lifeValue = statsManager.GetPercentLife();
                 energyBar.SetValue(lifeValue);
-                if (lifeValue <= 0)
-                    state = states.DEAD;
+                if (lifeValue <= 0) Die();
             }
         }
-        public void Revive()
+        public void RebornByHero(bool isOn)
         {
-            if (state == states.DEAD)
-            {
-                statsManager.Revive();
-                state = states.ALIVE;
-            }
+            beingHealingByHero = isOn;
         }
+        void Die()
+        {
+            state = states.DEAD;
+            rebornBar.SetActive(true);
+            ReviveLoop();
+        }
+        void ReviveLoop()
+        {
+            if (state != states.DEAD) return;
+            bool isBackToLife = statsManager.RebornRecovery(beingHealingByHero);
+            rebornBar.SetValue(statsManager.GetNormalizedHealth());
+            if(isBackToLife && state == states.DEAD)
+            {
+                print("revive");
+                state = states.ALIVE;
+                rebornBar.SetActive(false);
+            }
+            else
+                Invoke("ReviveLoop", 0.1f);
+        }
+        public virtual void OnEnemyEnterZone(Enemy enemy, bool isIn)  { }
     }
 }

@@ -28,10 +28,29 @@ namespace Tumba.Game.Characters
             }
             else if (collision.tag == "Player")
             {
-                print("helper!" + collision.tag);
                 CharacterHelper h = collision.GetComponent<CharacterHelper>();
-                h.Revive();
+                if(h == null)
+                    h = collision.GetComponentInParent<CharacterHelper>();
+                if (h == null)
+                    return;
+                Reborn(h, true);
             }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.tag == "Player")
+            {
+                CharacterHelper h = collision.GetComponent<CharacterHelper>();
+                if (h == null)
+                    h = collision.GetComponentInParent<CharacterHelper>();
+                if (h == null)
+                    return;
+                Reborn(h, false);
+            }
+        }
+        void Reborn(CharacterHelper ch, bool isOn)
+        {
+            ch.RebornByHero(isOn);
         }
     }
 }

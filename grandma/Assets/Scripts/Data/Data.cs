@@ -11,6 +11,12 @@ namespace Tumba
         static Data mInstance = null;
         public SpreadsheetLoader spreadsheetLoader;
         string newScene;
+        public loadTypes loadType;
+        public enum loadTypes
+        {
+            DATABASE,
+            LOCAL
+        }
         public static Data Instance
         {
             get

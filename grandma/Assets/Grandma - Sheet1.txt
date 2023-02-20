@@ -1,0 +1,5 @@
+	grandma	circle	mele	shooter
+health	1000	500	700	300
+speed	200	700	300	500
+hitTime	0	500	300	700
+power	0	300	700	500

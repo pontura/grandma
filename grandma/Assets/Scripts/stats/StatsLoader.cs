@@ -8,7 +8,7 @@ namespace Tumba.Stats
     {
         [SerializeField] Character grandMa;
         [SerializeField] Character circle;
-        [SerializeField] Character mele;
+        [SerializeField] Character explorer;
         [SerializeField] Character shooter;
 
         public List<StatsData> allStats;
@@ -26,6 +26,7 @@ namespace Tumba.Stats
             grandMa.InitStats(allStats[0]);
             circle.InitStats(allStats[1]);
             shooter.InitStats(allStats[3]);
+            explorer.InitStats(allStats[2]);
         }
         void OnDataLoaded( List<SpreadsheetLoader.Line> d)
         {
