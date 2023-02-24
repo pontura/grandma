@@ -7,12 +7,14 @@ namespace Tumba.Game.UI
     public class EnergyBar : MonoBehaviour
     {
         [SerializeField] ProgressBar progressBar;
+        [SerializeField] Image image;
         float value;
 
-        public void Init()
+        public void Init(Color color)
         {
             value = 1;
             progressBar.Init(value, null);
+            image.color = color;
            // Events.OnSoulGrabbed += OnSoulGrabbed;
         }
         void OnDestroy()

@@ -8,8 +8,10 @@ namespace Tumba.Game.Characters
 {
     public class Character : MonoBehaviour
     {
-        [SerializeField] EnergyBar energyBar;
-        [SerializeField] RebornBar rebornBar;
+        public Color color;
+        public int id;
+        private EnergyBar energyBar;
+        private RebornBar rebornBar;
         float speed = 10;
         protected Vector2 dir;
         protected float delayToShoot = 0.1f;
@@ -25,16 +27,23 @@ namespace Tumba.Game.Characters
 
         public virtual void InitStats(StatsData s)
         {
-            if(rebornBar != null)
-            {
-                rebornBar.SetActive(false);
-                rebornBar.Init(this.gameObject);
-            }
-            energyBar.Init();
+            print(gameObject.name);
+            rebornBar.SetActive(false);
+            rebornBar.Init(this.gameObject, color);
+            
+            energyBar.Init(color);
             statsManager = new StatsManager();
             statsManager.Init(s);
             speed = s.speed / 100;
             delayToShoot = s.hitTime / 1000;
+        }
+        public void SetEnergyBar(UI.EnergyBar e)
+        {
+            this.energyBar = e;
+        }
+        public void SetRebornBar(UI.RebornBar e)
+        {
+            this.rebornBar = e;
         }
         public void SetDelayToShoot(float _delayToShoot)
         {

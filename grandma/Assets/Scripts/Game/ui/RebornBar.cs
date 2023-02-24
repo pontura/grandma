@@ -7,14 +7,16 @@ namespace Tumba.Game.UI
     public class RebornBar : MonoBehaviour
     {
         [SerializeField] ProgressBar progressBar;
+        [SerializeField] Image image;
         float value;
         GameObject go;
 
-        public void Init(GameObject go)
+        public void Init(GameObject go, Color color)
         {
             this.go = go;
             value = 1;
             progressBar.Init(value, null);
+            image.color = color;
         }
         void OnDestroy()
         {

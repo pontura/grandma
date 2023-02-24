@@ -8,17 +8,17 @@ namespace Tumba.Game.UI
     {
         [SerializeField] ProgressBar progressBar;
 
-        public void Init()
+        void Start()
         {
-            progressBar.Init(0, OnFilled);
             Events.OnSoulGrabbed += OnSoulGrabbed;
         }
         void OnDestroy()
         {
             Events.OnSoulGrabbed -= OnSoulGrabbed;
         }
-        void OnFilled()
+        public void OnInit(System.Action OnFilled)
         {
+            progressBar.Init(0, OnFilled);
             progressBar.SetValue(0);
         }
         void AddValue()

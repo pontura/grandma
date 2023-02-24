@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Tumba.Game.Utils;
+using Tumba.Game;
 using UnityEngine;
 
 namespace Tumba.Game.Characters
@@ -10,10 +10,12 @@ namespace Tumba.Game.Characters
         float forwardValue = 3;
         public string weaponName;
         GameObject target;
-        [SerializeField] EnemiesExplorer enemiesExplorer;
+        [SerializeField] EnemiesExplorer _enemiesExplorer;
+        EnemiesExplorer enemiesExplorer;
 
         public override void Init(Hero hero)
         {
+            enemiesExplorer = Instantiate(_enemiesExplorer, transform.parent.transform);
             enemiesExplorer.Init(this);
         }
         public override void OnUpdate(Vector2 heroPos, Vector2 heroDir)

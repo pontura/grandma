@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tumba.Game.Characters;
 using UnityEngine;
 
-namespace Tumba.Game.Utils
+namespace Tumba.Game
 {
     public class EnemiesExplorer : MonoBehaviour
     {

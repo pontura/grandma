@@ -28,7 +28,6 @@ namespace Tumba
         }
         private void Start()
         {
-            charactersManager.Init();
             enemiesManager.Init();
         }
         private void Update()

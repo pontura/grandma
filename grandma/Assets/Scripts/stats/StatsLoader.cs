@@ -23,10 +23,7 @@ namespace Tumba.Stats
         }
         void AllLoaded()
         {
-            grandMa.InitStats(allStats[0]);
-            circle.InitStats(allStats[1]);
-            shooter.InitStats(allStats[3]);
-            explorer.InitStats(allStats[2]);
+            GameManager.Instance.charactersManager.InitStats(allStats);
         }
         void OnDataLoaded( List<SpreadsheetLoader.Line> d)
         {

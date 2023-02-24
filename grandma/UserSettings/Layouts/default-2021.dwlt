@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 151
+  controlID: 77
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 100}
   m_MaxSize: {x: 40480, y: 8096}
   vertical: 0
-  controlID: 16
+  controlID: 125
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 48a9feff52affeff
-      m_LastClickedID: -86190
-      m_ExpandedIDs: 50a9feff5aaffeff4a09ffff6a09ffff2a0bffff26fbffff305300004c5300009053000098530000cc530000e2530000f8530000005400001e5400002e5400009a540000b8540000
+      m_SelectedIDs: 80540000
+      m_LastClickedID: 21632
+      m_ExpandedIDs: f8d7ffff00d8ffff14d8ffff1cd8ffff48d8ffff50d8ffff64d8ffff6cd8ffff26fbfffff4ffffff5c530000aa530000ea5300001454000042540000ae540000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -416,22 +416,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Game/Characters
+    - Assets/prefabs/ingame
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Game/Characters
+  - Assets/prefabs/ingame
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\brenb\Documents\GitHub\grandma\grandma
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ac550000
-    m_LastClickedID: 21932
-    m_ExpandedIDs: 000000009455000096550000a4550000
+    m_SelectedIDs: 22840000
+    m_LastClickedID: 33826
+    m_ExpandedIDs: 0000000014560000165600002256000026560000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -459,7 +459,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009455000096550000
+    m_ExpandedIDs: 000000001456000016560000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -640,8 +640,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -100, y: -25.599976}
+      snapOffset: {x: -100, y: -25.599976}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -662,7 +662,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -887,9 +887,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.5599998, y: 0, z: 0.1}
+    m_Target: {x: 399.15, y: -185.86313, z: 0}
     speed: 2
-    m_Value: {x: -1.5599998, y: 0, z: 0.1}
+    m_Value: {x: 310.45, y: -185.86313, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -940,9 +940,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.074162
+    m_Target: 204.7475
     speed: 2
-    m_Value: 4.074162
+    m_Value: 204.7475
   m_Ortho:
     m_Target: 1
     speed: 2

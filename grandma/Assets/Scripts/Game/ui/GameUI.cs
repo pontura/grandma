@@ -18,7 +18,15 @@ namespace Tumba.Game.UI
         void Start()
         {
             restartBtn.Init(0, OnRestart, "RESTART");
-            levelBar.Init();
+            OnInitLevel();
+        }
+        void OnLevelDone()
+        {
+            Events.OnScreenOpen(ScreensManager.types.LEVELS_UPGRADE);
+        }
+        public void OnInitLevel()
+        {
+            levelBar.OnInit(OnLevelDone);
         }
         void OnRestart(int id)
         {
