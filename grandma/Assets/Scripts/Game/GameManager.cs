@@ -26,9 +26,9 @@ namespace Tumba
             if (mInstance == null)
                 mInstance = this as GameManager;
         }
-        private void Start()
+        public void InitLevel()
         {
-            enemiesManager.Init();
+            enemiesManager.Init(charactersManager.hero);
         }
         private void Update()
         {

@@ -6,10 +6,6 @@ namespace Tumba.Stats
 {
     public class StatsLoader : DataLoader
     {
-        [SerializeField] Character grandMa;
-        [SerializeField] Character circle;
-        [SerializeField] Character explorer;
-        [SerializeField] Character shooter;
 
         public List<StatsData> allStats;
 
@@ -24,6 +20,7 @@ namespace Tumba.Stats
         void AllLoaded()
         {
             GameManager.Instance.charactersManager.InitStats(allStats);
+            GameManager.Instance.InitLevel();
         }
         void OnDataLoaded( List<SpreadsheetLoader.Line> d)
         {

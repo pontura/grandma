@@ -6,7 +6,7 @@ namespace Tumba.Game.Characters
 {
     public class EnemiesManager : MonoBehaviour
     {
-        [SerializeField] Hero hero;
+        Hero hero;
         List<Enemy> all;
         [SerializeField] Vector2 offsetPos;
         [SerializeField] Transform container;
@@ -16,8 +16,9 @@ namespace Tumba.Game.Characters
         [SerializeField] float delayToRespawn = 1;
         [SerializeField] float minDelay = 0.1f;
 
-        public void Init()
+        public void Init(Hero hero)
         {
+            this.hero = hero;
             all = new List<Enemy>();
             Pool = GameManager.Instance.pool.Pool;
             Loop();

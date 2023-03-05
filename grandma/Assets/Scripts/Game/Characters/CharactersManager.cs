@@ -30,6 +30,7 @@ namespace Tumba.Game.Characters
         [SerializeField] float helperSpeed;
 
         List<StatsData> allStats;
+
         public void InitStats(List<StatsData> allStats)
         {
             this.allStats = allStats;
