@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Tumba.UI;
 using Tumba.Game.UI;
 using Tumba.Game.Characters;
+using Tumba.Game.Levels;
 
 public static class Events
 {
@@ -11,6 +12,7 @@ public static class Events
     public static System.Action ResetApp = delegate { };  
     public static System.Action<string> OnSoulGrabbed = delegate { };
     public static System.Action<Color> AddHelper = delegate { };
+    public static System.Action<WaveData> InitWave = delegate { };
 
     //UI
     public static System.Action<string> OnButtonPressed = delegate { };

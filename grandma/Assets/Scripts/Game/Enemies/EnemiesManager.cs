@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tumba.Game.Levels;
 using UnityEngine;
 
 namespace Tumba.Game.Characters
@@ -13,15 +14,25 @@ namespace Tumba.Game.Characters
         System.Action<GameObject> Pool;
 
         [SerializeField] float speed;
-        [SerializeField] float delayToRespawn = 1;
-        [SerializeField] float minDelay = 0.1f;
+        [SerializeField] float delaySpeed;
+        [SerializeField] float delayRespan;
+        [SerializeField] float delayRespanFrom;
+        [SerializeField] float delayRespanTo;
+        [SerializeField] float minDelay;
 
+        private void Awake()
+        {
+            Events.InitWave += InitWave;
+        }
+        private void OnDestroy()
+        {
+            Events.InitWave -= InitWave;
+        }
         public void Init(Hero hero)
         {
             this.hero = hero;
             all = new List<Enemy>();
             Pool = GameManager.Instance.pool.Pool;
-            Loop();
         }        
         public void OnUpdate()
         {
@@ -33,14 +44,23 @@ namespace Tumba.Game.Characters
                 e.Move(dir);
             }
         }
+        public void InitWave(WaveData waveData)
+        {
+            CancelInvoke();
+            this.delayRespan = waveData.delayRespanFrom;
+            this.delayRespanFrom = waveData.delayRespanFrom;
+            this.delayRespanTo = waveData.delayRespanTo;
+            this.delaySpeed = waveData.delaySpeed;
+            Invoke("Loop", delayRespan);
+        }
         void Loop()
         {
             AddEnemy();
-            Invoke("Loop", delayToRespawn);
-            delayToRespawn -= 0.03f;
-            if (delayToRespawn < minDelay)
-                delayToRespawn = minDelay;
-                
+            delayRespan -= delaySpeed;
+            if (delayRespan < delayRespanTo)
+                delayRespan = delayRespanTo;
+
+            Invoke("Loop", delayRespan);
         }
         void AddEnemy()
         {

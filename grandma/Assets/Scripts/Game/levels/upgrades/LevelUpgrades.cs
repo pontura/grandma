@@ -4,7 +4,7 @@ using Tumba.Game.Characters;
 using Tumba.Game.UI;
 using UnityEngine;
 
-namespace Tumba.Game.LevelUpgrades
+namespace Tumba.Game.Levels
 {
     public class LevelUpgrades : UIScreen
     {

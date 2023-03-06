@@ -3,7 +3,7 @@ using Tumba.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tumba.Game.LevelUpgrades
+namespace Tumba.Game.Levels
 {
     public class LevelUpgradeButton : ButtonUI
     {
